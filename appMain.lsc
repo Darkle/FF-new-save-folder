@@ -1,0 +1,53 @@
+import fs from 'fs'
+import path from 'path'
+import os from 'os'
+import crypto from 'crypto'
+
+import config from './config.json'
+
+months = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sept',
+  'Oct',
+  'Nov',
+  'Dec'
+]
+desktopPath = path.join(os.homedir(), 'Desktop')
+
+date = new Date()
+dayOfTheMonth = date.getDate()
+month = months[date.getMonth()]
+year = `${ date.getFullYear() }`.slice(2)
+
+let downloadFolderPath = path.join(desktopPath, `${ dayOfTheMonth }-${ month }-${ year }`)
+
+if fs.existsSync(downloadFolderPath):
+  now downloadFolderPath = path.join(
+    desktopPath,
+    `${ dayOfTheMonth }-${ month }-${ year }-${ crypto.randomBytes(4).toString('hex') }`
+  )
+
+fs.mkdirSync(downloadFolderPath)
+
+prefsFileData = fs.readFileSync(config.firefoxPrefsFilePath, {encoding: 'utf-8'})
+
+// user_pref("browser.download.dir", "C:\\Users\\Coop\\Desktop\\mon-20-aug-18");
+newPrefsFileData = prefsFileData.split(/\r?\n/g).reduce((fileData, line) ->
+  if line.startsWith(`user_pref("browser.download.dir",`):
+    return`${ fileData }user_pref("browser.download.dir", "${ addDoubleSlashesforWindows(downloadFolderPath) }");\n`
+  else: return `${ fileData }${ line }\n`
+, '')
+
+fs.writeFileSync(config.firefoxPrefsFilePath, newPrefsFileData)
+
+addDoubleSlashesforWindows(folderPath):String ->
+  if os.platform() === 'win32':
+    return folderPath.replace(/\\/g, '\\\\')
+  folderPath
