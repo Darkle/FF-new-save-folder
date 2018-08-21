@@ -81,38 +81,33 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = "./appMain.lsc");
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ "./appMain.lsc":
-/*!*********************!*\
-  !*** ./appMain.lsc ***!
-  \*********************/
-/*! no static exports found */
+/******/ ([
+/* 0 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-var _fs = __webpack_require__(/*! fs */ "fs");
+var _fs = __webpack_require__(1);
 
 var _fs2 = _interopRequireDefault(_fs);
 
-var _path = __webpack_require__(/*! path */ "path");
+var _path = __webpack_require__(2);
 
 var _path2 = _interopRequireDefault(_path);
 
-var _os = __webpack_require__(/*! os */ "os");
+var _os = __webpack_require__(3);
 
 var _os2 = _interopRequireDefault(_os);
 
-var _crypto = __webpack_require__(/*! crypto */ "crypto");
+var _crypto = __webpack_require__(4);
 
 var _crypto2 = _interopRequireDefault(_crypto);
 
-var _config = __webpack_require__(/*! ./config.json */ "./config.json");
+var _config = __webpack_require__(5);
 
 var _config2 = _interopRequireDefault(_config);
 
@@ -150,61 +145,34 @@ function addDoubleSlashesforWindows(folderPath) {
 }
 
 /***/ }),
-
-/***/ "./config.json":
-/*!*********************!*\
-  !*** ./config.json ***!
-  \*********************/
-/*! exports provided: firefoxPrefsFilePath, default */
-/***/ (function(module) {
-
-module.exports = {"firefoxPrefsFilePath":"C:\\Users\\Coop\\.FFPart\\FFprofile\\prefs.js"};
-
-/***/ }),
-
-/***/ "crypto":
-/*!*************************!*\
-  !*** external "crypto" ***!
-  \*************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-module.exports = require("crypto");
-
-/***/ }),
-
-/***/ "fs":
-/*!*********************!*\
-  !*** external "fs" ***!
-  \*********************/
-/*! no static exports found */
+/* 1 */
 /***/ (function(module, exports) {
 
 module.exports = require("fs");
 
 /***/ }),
+/* 2 */
+/***/ (function(module, exports) {
 
-/***/ "os":
-/*!*********************!*\
-  !*** external "os" ***!
-  \*********************/
-/*! no static exports found */
+module.exports = require("path");
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports) {
 
 module.exports = require("os");
 
 /***/ }),
-
-/***/ "path":
-/*!***********************!*\
-  !*** external "path" ***!
-  \***********************/
-/*! no static exports found */
+/* 4 */
 /***/ (function(module, exports) {
 
-module.exports = require("path");
+module.exports = require("crypto");
+
+/***/ }),
+/* 5 */
+/***/ (function(module) {
+
+module.exports = {"firefoxPrefsFilePath":"C:\\Users\\Coop\\.FFPart\\FFprofile\\prefs.js"};
 
 /***/ })
-
-/******/ });
-//# sourceMappingURL=appMain-compiled.js.map
+/******/ ]);
