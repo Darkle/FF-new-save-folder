@@ -43,7 +43,7 @@ prefsFileData = fs.readFileSync(config.firefoxPrefsFilePath, {encoding: 'utf-8'}
 newPrefsFileData = prefsFileData.split(/\r?\n/g).reduce((fileData, line) ->
   if line.startsWith(`user_pref("browser.download.dir",`):
     return`${ fileData }user_pref("browser.download.dir", "${ addDoubleSlashesforWindows(downloadFolderPath) }");\n`
-  else: return `${ fileData }${ line }\n`
+  `${ fileData }${ line }\n`
 , '')
 
 fs.writeFileSync(config.firefoxPrefsFilePath, newPrefsFileData)
